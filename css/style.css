@@ -126,7 +126,106 @@ body{
         0 0 10px  #ff2d75;
     }
 }
-/*---------------------------GRADE---------------------------*/
+/*NAVIGATION*/
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+.nav-wrapper{
+    position: relative;
+    background-color: #2f2f2f;
+    display: flex;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    max-height: 80px;
+    height: auto;
+}
+.nav-item{
+    list-style: none;
+    position: relative;
+    max-width: 80px;
+    max-height: 80px;
+    width: 100%;
+    height: 100%;
+}
+.nav-link{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+}
+.nav-link__icon{
+    position: relative;
+    display: block;
+    line-height: 85px;
+    font-size: 1.5em;
+    transition: .5s;
+    text-align: center;
+    color: rgba(255,255,255,.5);
+}
+.nav-link:hover .nav-link__icon{
+    color: rgba(255,255,255,1);
+}
+.nav-item.active .nav-link__icon{
+    color: #29fd53;
+    transform: translateY(-8px);
+}
+.nav-link__title{
+    position: absolute;
+    font-weight: 600;
+    font-size: .6em;
+    text-transform: uppercase;
+    transform: translateY(0px);
+    letter-spacing: .05em;
+    opacity: 0;
+    z-index: 10;
+    color: #222327;
+}
+.nav-item.active .nav-link__title{
+    opacity: 1;
+    transform: translateY(16px);
+}
+.nav-indicator{
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .5s;
+}
+.nav-indicator::before{
+    content: '';
+    position: absolute;
+    bottom: 14px;
+    width: 80%;
+    height: 16px;
+    background-color: #29fd53;
+    border-radius: 10px;
+    transition: .5s;
+}
+.nav-item:nth-child(2).active ~ .nav-indicator{
+    transform: translateX(calc(80px * 1));
+}
+.nav-item:nth-child(3).active ~ .nav-indicator{
+    transform: translateX(calc(80px * 2));
+}
+.nav-item:nth-child(4).active ~ .nav-indicator{
+    transform: translateX(calc(80px * 3));
+}
+.nav-item:nth-child(5).active ~ .nav-indicator{
+    transform: translateX(calc(80px * 4));
+}
+/*-----------------------GRADE---------------------------*/
 .grade{
     display: flex;
     align-items: center;
