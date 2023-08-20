@@ -1180,3 +1180,189 @@ input[type="radio"]{
     padding: 10px 40px;
     display: block;
 }
+/*--------------Border------------*/
+.border{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #1d1d1d;
+}
+.border-box{
+    position: relative;
+    width: 400px;
+    height: 400px;
+    background:  repeating-conic-gradient(from var(--a), #ff2770 0%, #ff2770 5%, transparent 5%, transparent 40%, #ff2770 50%);
+    animation: animate-border 4s linear infinite;
+    border-radius: 20px;
+}
+@property --a{
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+
+@keyframes animate-border{
+    0%{
+        --a: 0deg;
+    }
+    100%{
+        --a: 360deg;
+    }
+}
+
+.border-box::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:  repeating-conic-gradient(from var(--a), #45f3ff 0%, #45f3ff 5%, transparent 5%, transparent 40%, #45f3ff 50%);
+    animation: animate-border 4s linear infinite;
+    animation-delay: -1s;
+    border-radius: 20px;
+}
+
+.border-box::after{
+    content: '';
+    position: absolute;
+    inset: 8px;
+    background: #2d2d39;
+    border-radius: 15px;
+    border: 8px solid #1d1d1d;
+}
+
+/*Flip-Card*/
+.flipCard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #222;
+}
+
+.flipCard-wrapper{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:80px;
+}
+
+.flipCard-item{
+    position: relative;
+    width: 300px;
+    height: 400px;
+    background: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.flipCard-item__content{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 25px;
+    gap: 10px;
+    opacity: 0;
+    transition: .5s;
+    transition-delay: 0s;
+}
+.flipCard-item:hover .flipCard-item__content{
+    opacity: 1;
+    transition-delay: .5s;
+}
+.flipCard-item__content h2{
+    font-weight: 600;
+    letter-spacing: .1em;
+    color: var(--clr);
+}
+
+.flipCard-item__content p{
+    text-align: center;
+    color: #fff;
+}
+
+.flipCard-item__content a{
+    text-decoration: none;
+    color: #fff;
+    background: var(--clr);
+    padding: 10px 15px;
+    display: inline-block;
+    letter-spacing: .1em;
+    margin-top: 10px;
+}
+
+.flipCard-item__img,
+.flipCard-item__text{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .5s;
+}
+.flipCard-item__img{
+    background: #fff;
+    height: 120px;
+    z-index: 1;
+    transform-origin: bottom;
+}
+.flipCard-item__img::before{
+    content: '';
+    position: absolute;
+    bottom: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 144px;
+    height: 74px;
+    background: #fff;
+    border-bottom-left-radius: 80px;
+    border-bottom-right-radius: 80px;
+    z-index: 1;
+}
+.flipCard-item:hover .flipCard-item__img{
+    transform: translateY(-100%) rotateX(90deg);
+}
+.flipCard-item__img img{
+    position: relative;
+    top: 60px;
+    width: 70px;
+    z-index: 1000;
+}
+.flipCard-item__text{
+    background: var(--clr);
+    height: 280px;
+    border-top: 8px solid #333;
+    transform-origin:top;
+    transition-delay: .5s;
+    align-items: flex-end;
+    overflow: hidden;
+}
+.flipCard-item__text::before{
+    content: '';
+    position: absolute;
+    width: 160px;
+    height: 80px;
+    top:-8px;
+    background: #333;
+    border-bottom-left-radius: 80px;
+    border-bottom-right-radius: 80px;
+}
+.flipCard-item__text h2{
+    color: #222;
+    letter-spacing: 0.15em;
+    font-size: 1.25em;
+    font-weight: 500;
+    text-transform: uppercase;
+    background: #fff;
+    padding: 5px 25px;
+    box-shadow:0 0 0 8px #333 ;
+}
+.flipCard-item:hover .flipCard-item__text{
+    transform: translateY(100%) rotateX(90deg);
+}
